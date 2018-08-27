@@ -130,6 +130,15 @@
 
 <p> This can be effectively accomplished by introducing a new logical bypass span between the anchor nodes of the chain and route express flow lightpaths onto this logical bypass span. The bypass span’s physical route would be identical to the chain’s constituent spans and would share a common cause of failure with each of those spans. When one of the chain’s spans fails, so too does the bypass span, thereby requiring restoration of the local flow working capacity on the failed span and the express flow working capacity on the bypass span. From the perspective of the traffic that fully transits chains, no chains exist (and as a consequence, neither do the degree-2 nodes within them), replaced by their associated bypass spans, so the effective connectivity of the network becomes much higher. This so-called meta-mesh of network topology, where each chain is replaced by a bypass span connecting its end nodes, is a homeomorphism of the original network topology. Such a meta-mesh topology is illustrated in Figure 4b, which derived from the original network topology shown in Figure 4a. At this level of abstraction, only the degree-3+ nodes from the original network exist, with all chains of degree-2 nodes replaced by bypass spans. The result is a network with much fewer spans and nodes, but most importantly, one with a significantly higher average nodal degree. A simple application of the 1⁄((d ̅-1) ) lower bound on redundancy suggests that the potential of efficiency of the network increases substantially. The lower bound of spare capacity redundancy of the original network in Figure 1 is 73%, while the lower bound of the meta-mesh network in Figure 5 is 45%.</p>
 
+<div class="image-wrapper">
+
+<img src="/img/Fig4.jpg" alt="" width="" height="" />
+
+
+<p class="image-caption">Fig 4. Sprints Communications Optical Transport Network</p>
+
+</div>
+
 <p><br /></p>
 <h1 id="Single-Failure Meta-Mesh">Conventional Design</h1>
 <p>Now, we introduce the detailed analysis of the conventional span-restorable network. This model uses the following notation:</p>
@@ -150,7 +159,7 @@
 <img src="/img/Fig4.png" alt="" width="" height="" />
 
 
-<p class="image-caption">Fig 4. Span-restoration mathematical model</p>
+<p class="image-caption">Fig 5. Span-restoration mathematical model</p>
 
 </div>
 
@@ -161,7 +170,7 @@
 <img src="/img/Fig5.png" alt="" width="" height="" />
 
 
-<p class="image-caption">Fig 5. Meta-Mesh additional mathematical formulation</p>
+<p class="image-caption">Fig 6. Meta-Mesh additional mathematical formulation</p>
 
 </div>
 
@@ -187,11 +196,24 @@
 <img src="/img/Fig6.png" alt="" width="" height="" />
 
 
-<p class="image-caption">Fig 6. The Dual-Failure Meta-Mesh Mathematical Model</p>
+<p class="image-caption">Fig 7. The Dual-Failure Meta-Mesh Mathematical Model</p>
 
 </div>
 
 <p> All sets of constraints (10)-(16) seek to ensure restoration in all possible dual-failure scenarios in a meta-mesh network. Constraints (17)-(23) assert that span j will not be used for restoration of span i in the case of dual span failure situation (i,j), however, it supports restoration flow when it is not part of the dual failure scenario. Finally, the set of constraints (24)-(26) guarantee enough spare capacity in all spans in the network for the restoration of any dual-failure.</p>
+
+<p><br /></p>
+<h1 id="Single-Failure Meta-Mesh">Experimental Study</h1>
+<p> We base our experiments of the high availability meta-mesh dual-failure design models in a set of 124 test-case network topologies, which are further divided into six groups or families. Each network inside the network family is identical, except that each subsequently higher connected member of a network family has one additional span added to it, allowing us to sweep through a range of average nodal degree. This technique allows us to test our model with a comparative analysis on networks having a progression from high to low average nodal degree as well as facilitate characterization and understanding of the proposed design model as the network connectivity varies. Span costs (i.e., the Cj values) are proportional to the lengths of the spans, so the objective function effectively represents a wavelength-distance measure for the network. In this regard, the objective function can be easily converted to one representing distance-independent network capacity by setting all Cj values to 1.</p>
+
+<div class="image-wrapper">
+
+<img src="/img/Fig6.png" alt="" width="" height="" />
+
+
+<p class="image-caption">Fig 8. Optical Transport Networks</p>
+
+</div>
 
     </center>
   </div>
