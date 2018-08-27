@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Optimization of a Dual-Failure Scenario in Large-Scale Optical Networks</title>
+  <meta name="description" content="">
+  <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|Source+Sans+Pro:400,700,200,300|Josefin+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="shortcut icon" type="image/png" href="http://andrescastillol.github.io/icon.png">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="canonical" href="http://andrescastillol.github.io/cs/stocks.html">
+  <link rel="alternate" type="application/rss+xml" title="Andres Castillo" href="http://andrescastillol.github.io/feed.xml">
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-100344901-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</head>
+
+  <body>
+
+    
+<div class="wrapper">
+  <center> <a href="/index.html"><div class="site-title">   Andres Castillo </div></a></center>
+</div>
+<div class="wrapper site-description">
+<center>  Operations Research and Business Analysis </center>
+</div>
+<div class="wrapper">
+  <div class="trigger site-navigation">
+    <a class="page-link" href="http://andrescastillol.github.io">About</a>
+
+    
+    
+
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/cs/">blog</a>
+    
+    
+    
+    
+    
+    
+    
+
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/portfolio/">portfolio</a>
+    
+    
+    
+
+
+    <span class="exclamationMark">/</span><a class="page-link" href="/publications/">publications</a>
+    
+    
+    
+    
+    
+    
+     / <a class="page-link" href="http://andrescastillol.github.io/documents/cv.pdf">CV</a>
+  </div>
+</div>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline"><a class="post-title-link"  href="/cs/stocks.html">Optimization of a Dual-Failure Scenario in Large-Scale Optical Networks</a></h1>
+  <center>  <p class="post-meta"><time datetime="2018-08-26T00:00:00+00:00" itemprop="datePublished">Aug 26, 2018</time></p>
+    
+   </center>
+  </header>
+
+</center>
+<p><br />
+<br /></p>
+<h1 id="introduction">Introduction</h1>
+<p> Survivability continues to be a challenging and fundamental aspect of backbone transport network design. As demand for data services has grown over the years, the world’s largest infrastructures, governments, businesses, and societies in general become more and more dependent on global communication systems. Therefore, any communication service disruption in such an environment has become unacceptable, as it can negatively impact the economy and society of a country.</p>
+
+<p> Modern long-haul networks are capable of providing carriage for a big volume of aggregated data that it is compressed into lightpaths and routed node-to-node from source to destination over large distances. Data traffic such as voice calls, video calls, and other services are not separate transmissions; rather they are a combination of all traffic types multiplexed into digital signal streams. That is, point-to-point signals that operates logically as if they have their own dedicated transmissions systems, but in reality, they are typically virtual networks supported by an underlying structure, the transport network.</p>
+
+<p> As transport networks’ bandwidth requirements increased, failure in core communication link has become potentially quite disastrous. Therefore, efficient protection and restoration for optical transport networks are of significant interest for network operators. Among the various mesh network protection and restoration mechanisms, span restoration is an attractive choice due to its simplicity and easy implementation. In span restoration, span failures are protected by a set of diverse replacement paths between the immediate end-nodes of the failed span. Note that the efficiency of this type of restoration mechanism is strongly linked with the connectivity of the underlying network, while efficiency decreases in particularly sparse networks topologies. Therefore, in an effort to enhance the capacity efficiency in span restoration, the meta-mesh restoration approach was developed where chains of degree-2 nodes are bypassed either physically or virtually by the addition of a new logical bypass span that follows the same physical path, and over which all lightpaths that fully transit the chain are routed.</p>
+
+<p><br /></p>
+<h1 id="technical-analysis">The Meta-Mesh</h1>
+<p> The meta-mesh approach is a form of the conventional span restoration technique that takes advantage of the existence of chains of degree-2 nodes in the network allowing a reduction in spare capacity requirements. Consider the chain of degree-2 nodes shown in Figure 1, with working and spare capacities indicated by the wi and si. Using span restoration to provide the restorability of the spans in that chain will require at least as much spare capacity on each span within the chain as the maximum working capacity value allocated within the chain (except for the span with the maximum working capacity that will need spare capacity equal to the second highest working capacity in the chain). This is due to the fact that all working capacity on a span within the chain must be restored back through all surviving spans in the chain to the anchor nodes (the degree-3 nodes on the ends of the chain), and then back to the network.</p>
+
+<div class="image-wrapper">
+
+<img src="/img/Fig1.jpg" alt="" width="" height="" />
+
+
+<p class="image-caption">Fig 1. Spare capacity requirements in a chain using span restoration.</p>
+
+</div>
+
+<p> However, a closer look at the nature of the working capacity on the spans in the chain will reveal something that it is shown in Figure 2. Only some of the working capacities on the spans within the chain will arise from working traffic that originates and/or terminates at one of the chains within the span; we call this local working flow, denoted by wLOC. The remainder of the working capacity on the chain’s spans arises from working traffic that fully transits the chain, originating and terminating elsewhere within the greater network; we call this express working flow, denoted by wEXP.</p>
+
+<div class="image-wrapper">
+
+<img src="/img/Fig2.jpg" alt="" width="" height="" />
+
+
+<p class="image-caption">Fig 2. Meta-mesh breakdown of working capacity into local and express flow</p>
+
+</div>
+
+<p> The meta-mesh approach takes advantage of this breakdown with the realization that it is only the capacity arising from the local flow that needs to be restored by looping back all the way through the interior of the chain. The capacity that arises from express flow, on the other hand, can be allowed to fail all the way back to the anchor nodes in much the same way as stub-release in path restoration. As a result, the spans within the chain only require sufficient spare capacity to restore local flow capacity, as illustrated in Figure 3, where only 45 units of spare capacity would be needed within the chain to achieve full single failure restorability. This capacity is equal to the largest amount of working flow across the chain and, therefore, the chain spans now require 35 fewer units of spare capacity investment than needed previously (in Figure 1). Those fewer 35 units are now the express working flow.</p>
+
+<div class="image-wrapper">
+
+<img src="/img/Fig3.jpg" alt="" width="" height="" />
+
+
+<p class="image-caption">Fig 3. Spare capacity requirements in a chain using meta-mesh restoration</p>
+
+</div>
+
+<p> This can be effectively accomplished by introducing a new logical bypass span between the anchor nodes of the chain and route express flow lightpaths onto this logical bypass span. The bypass span’s physical route would be identical to the chain’s constituent spans and would share a common cause of failure with each of those spans. When one of the chain’s spans fails, so too does the bypass span, thereby requiring restoration of the local flow working capacity on the failed span and the express flow working capacity on the bypass span. From the perspective of the traffic that fully transits chains, no chains exist (and as a consequence, neither do the degree-2 nodes within them), replaced by their associated bypass spans, so the effective connectivity of the network becomes much higher. This so-called meta-mesh of network topology, where each chain is replaced by a bypass span connecting its end nodes, is a homeomorphism of the original network topology. Such a meta-mesh topology is illustrated in Figure 4b, which derived from the original network topology shown in Figure 4a. At this level of abstraction, only the degree-3+ nodes from the original network exist, with all chains of degree-2 nodes replaced by bypass spans. The result is a network with much fewer spans and nodes, but most importantly, one with a significantly higher average nodal degree. A simple application of the 1⁄((d ̅-1) ) lower bound on redundancy suggests that the potential of efficiency of the network increases substantially. The lower bound of spare capacity redundancy of the original network in Figure 1 is 73%, while the lower bound of the meta-mesh network in Figure 5 is 45%.</p>
+
+<p><br /></p>
+<h1 id="Single-Failure Meta-Mesh">Conventional Design</h1>
+<p>Now, we introduce the detailed analysis of the conventional span-restorable network. This model uses the following notation:</p>
+
+<div class="image-wrapper">
+
+<img src="/img/Table1.png" alt="" width="" height="" />
+
+
+<p class="image-caption">Table 1. Span-restoration notation</p>
+
+</div>
+
+<p> The Integer Linear Programming model is as follows:</p>
+
+<div class="image-wrapper">
+
+<img src="/img/Fig4.png" alt="" width="" height="" />
+
+
+<p class="image-caption">Fig 4. Span-restoration mathematical model</p>
+
+</div>
+
+<p> The objective function in (1) minimizes the total cost of placing working and spare capacity for each span failure in the network. Constraint in (2) guarantees that the working flow assigned to each eligible working route for relation r fully routes the total demand of each relation service path. Note that this indicates that the total demand may be divided over several possible different routes. Constraint in (3) implies that every single failure span i working capacity must be sufficient to meet the prefailure demands of all pair relation r that have working flow across it. Constraint in (4) asserts sufficient restoration capacity in all eligible restoration routes in the event of span i failure. Lastly, constraint in (5) ensures sufficient spare capacity on every surviving span j for all restoration routes placed on them during failure of span i. The meta-mesh design was augmented to include a logical bypass span in parallel with each chain and to convert any single span failure of the chain into a logical dual span failure scenario between any span inside the chain and its corresponding bypass span. In this sense, from the span restoration ILP formulation presented before, the objective function (1) as well as constraints (2), (3), and (4) remain unchanged in the meta-mesh ILP model. Now, in addition, constraint (5) is replaced by two new constraints:</p>
+
+<div class="image-wrapper">
+
+<img src="/img/Fig5.png" alt="" width="" height="" />
+
+
+<p class="image-caption">Fig 5. Meta-Mesh additional mathematical formulation</p>
+
+</div>
+
+<p> Constraints in (6) guarantees sufficient spare capacity on any surviving span j to accommodate all restoration flow routes over it for failure of any direct span i. Similarly, constraints in (7) ensures sufficient amount of spare capacity on any span j for all restoration routes placed on them for the logical dual failure of any chain span i and its associated bypass span k(i). In this case, k(i) is used as a mapping of individual spans that corresponds to a certain chain. For example, spans S1, S2, S3, and S4 might all be part of the chain whose bypass span is B7, so then k_S1=k_S2=k_S3=k_S4=B7.</p>
+
+<p><br /></p>
+<h1 id="Dual-Failure Meta-Mesh">Dual-failure meta-mesh design</h1>
+<p>The meta-mesh dual-failure minimum capacity (DFMC) ILP design model provides allocation of spare capacity and the routing demands to support complete dual-failure restorability in a meta-mesh network topology. Our goal is to determine the minimum-cost of achieving all possible dual span failure restoration in a meta-mesh network. Clearly, dual-failure scenarios adjacent to a degree-2 node are inherently not restorable. However, the main advantage of the meta-mesh design is that logically enhance the network topology so that each node inside of the network graph is at least tri-connected. Therefore, our dual-failure calculations are based on the following scenarios:</p>
+
+<div class="image-wrapper">
+
+<img src="/img/Table2.png" alt="" width="" height="" />
+
+
+<p class="image-caption">Table 2. Meta-Mesh Dual-Failure Scenarios</p>
+
+</div>
+
+<p> Our proposed DFMC ILP design model follows from the meta-mesh ILP design model and carries forward the Objective Function (1) and all of the constraints from that prior model (i.e., constraints (2) through (4) as well as (6) and (7)). Those prior constraints ensure full single-failure restoration of the network, as above. The new constraints are:</p>
+
+<div class="image-wrapper">
+
+<img src="/img/Fig6.png" alt="" width="" height="" />
+
+
+<p class="image-caption">Fig 6. The Dual-Failure Meta-Mesh Mathematical Model</p>
+
+</div>
+
+<p> All sets of constraints (10)-(16) seek to ensure restoration in all possible dual-failure scenarios in a meta-mesh network. Constraints (17)-(23) assert that span j will not be used for restoration of span i in the case of dual span failure situation (i,j), however, it supports restoration flow when it is not part of the dual failure scenario. Finally, the set of constraints (24)-(26) guarantee enough spare capacity in all spans in the network for the restoration of any dual-failure.</p>
+
+    </center>
+  </div>
+
+    <div class="PageNavigation">
+      
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <!-- <h2 class="footer-heading small-site-title">Andres Castillo</h2> -->
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list footer-content">
+          <!-- <li>Made with <i class="fa fa-heart"></i> on <a href="http://jekyllrb.com"><span style="color:black">{ { Jekyll } }</a></span></li> -->
+
+
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3 footer-content">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/andrescastillol"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">andrescastillol</span></a>
+
+          </li>
+          
+          
+          <li>
+            <a href="https://uk.linkedin.com/in/andrescastillol"><span class="icon icon--linkedin"><svg viewBox="0 0 300 300"><path fill="#A9ACB0" d="M277.792814,0 L22.1430112,0 C9.92675211,0 0,9.68301024 0,21.6159454 L0,278.344879 C0,290.290314 9.92675211,299.98999 22.1430112,299.98999 L277.792814,299.98999 C290.029906,299.98999 299.998323,290.292397 299.998323,278.344879 L299.998323,21.6159454 C299.998323,9.68301024 290.029906,0 277.792814,0 Z M44.4797658,112.464997 L88.9761978,112.464997 L88.9761978,255.631054 L44.4797658,255.631054 L44.4797658,112.464997 Z M66.7373565,41.3007053 C80.9618819,41.3007053 92.5219128,52.8607362 92.5219128,67.0915114 C92.5219128,81.3347861 80.9618819,92.894817 66.7373565,92.894817 C52.4753324,92.894817 40.9319676,81.3347861 40.9319676,67.0915114 C40.9340508,52.8628195 52.4774157,41.3007053 66.7373565,41.3007053 Z M116.885683,112.464997 L159.561343,112.464997 L159.561343,132.026845 L160.157156,132.026845 C166.098624,120.77097 180.61064,108.9047 202.257835,108.9047 C247.314665,108.9047 255.633137,138.557877 255.633137,177.102424 L255.633137,255.62897 L211.167954,255.62897 L211.167954,186.006294 C211.167954,169.404764 210.863797,148.049227 188.045809,148.049227 C164.894498,148.049227 161.34045,166.13404 161.34045,184.806334 L161.34045,255.62897 L116.8836,255.62897 L116.8836,112.464997 L116.885683,112.464997 Z"/>
+</svg>
+</span><span class="username">andrescastillol</span></a>
+
+          </li>
+          
+
+        </ul>
+      </div>
+
+
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>
