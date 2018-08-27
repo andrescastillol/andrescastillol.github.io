@@ -168,7 +168,7 @@
 <p> Constraints in (6) guarantees sufficient spare capacity on any surviving span j to accommodate all restoration flow routes over it for failure of any direct span i. Similarly, constraints in (7) ensures sufficient amount of spare capacity on any span j for all restoration routes placed on them for the logical dual failure of any chain span i and its associated bypass span k(i). In this case, k(i) is used as a mapping of individual spans that corresponds to a certain chain. For example, spans S1, S2, S3, and S4 might all be part of the chain whose bypass span is B7, so then k_S1=k_S2=k_S3=k_S4=B7.</p>
 
 <p><br /></p>
-<h1 id="Dual-Failure Meta-Mesh">Dual-failure meta-mesh design</h1>
+<h1 id="Dual-Failure Meta-Mesh">Dual-failure Meta-Mesh Design</h1>
 <p>The meta-mesh dual-failure minimum capacity (DFMC) ILP design model provides allocation of spare capacity and the routing demands to support complete dual-failure restorability in a meta-mesh network topology. Our goal is to determine the minimum-cost of achieving all possible dual span failure restoration in a meta-mesh network. Clearly, dual-failure scenarios adjacent to a degree-2 node are inherently not restorable. However, the main advantage of the meta-mesh design is that logically enhance the network topology so that each node inside of the network graph is at least tri-connected. Therefore, our dual-failure calculations are based on the following scenarios:</p>
 
 <div class="image-wrapper">
